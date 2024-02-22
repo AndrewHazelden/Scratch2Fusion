@@ -4,9 +4,9 @@ Scratch to Fusion - 2024-02-21 08.16 PM
 By Andrew Hazelden <andrew@andrewhazelden.com>
 
 # Overview:
-This script imports Assimilate Scratch/LiveFX tray content into BMD Fusion Studio.
+This script imports Assimilate Scratch/LiveFX content into BMD Fusion Studio.
 
-Each tray clip is created as a Loader node in Fusion. The filename, tile color, and comment attributes are assigned to each node.
+Each clip is created as a Loader node in Fusion. The filename, tile color, and comment attributes are assigned to each node.
 
 # Script Installation:
 ## Part A
@@ -44,7 +44,7 @@ Make sure the file "Scratch2Fusion-macOS.command" is selected. Then press the "O
 
 5. Open a Scratch project and switch to the Construct tab. Select several clips in the Tray.  In the Construct tab click on the "Tools" button. Then click on the Custom Commands > Fusion Studio" button to run this script.
 
-6. Switch to Fusion Studio. The Scratch Tray items are now displayed in Fusion.
+6. Switch to Fusion Studio. The selected Scratch clips are now displayed in Fusion.
 
 
 Script CLI Usage Example:
