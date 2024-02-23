@@ -1,4 +1,7 @@
-* Copyright (C) 2018 ASSIMILATE BV.
+This script is based upon Assimilate's 's2nuke_v9.py' script:
+/Library/Application Support/Assimilator/Defaults/Script/s2nuke_v9.py
+
+*Copyright (C) 2018 ASSIMILATE BV.
 *
 * Permission to use, copy, modify, and distribute this software for any
 * purpose with or without fee is hereby granted, provided that the above
