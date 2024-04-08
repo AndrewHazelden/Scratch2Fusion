@@ -9,6 +9,7 @@ This script imports Assimilate Scratch/LiveFX content into BMD Fusion Studio.
 Each clip is created as a Loader node in Fusion. The filename, tile color, and comment attributes are assigned to each node.
 
 # Script Installation:
+
 ## Part A
 
 Copy the included scripts into the "Assimilator/Defaults/Script/" folder on your hard disk.
@@ -57,12 +58,12 @@ Windows Path:
 
 Make sure the file "Scratch2Fusion-macOS.command" or "Scratch2Fusion-Win.bat" is selected. Then press the "Open" button to close the dialog.
 
-5. Open a Scratch project and switch to the Construct tab. Select several clips in the Tray.  In the Construct tab click on the "Tools" button. Then click on the Custom Commands > Fusion Studio" button to run this script.
+5. Open a Scratch project and switch to the Construct tab. Select several clips.  In the Construct tab click on the "Tools" button. Then click on the Custom Commands > Fusion Studio" button to run this script.
 
 6. Switch to Fusion Studio. The selected Scratch clips are now displayed in Fusion.
 
 
-Troubleshooting:
+# Troubleshooting:
 
 The "Scratch2Fusion-Win.bat" script on Windows expects your Python 3 executable to be in the PATH environment variable, and to have the filename of "python.exe". You can revise the script if your executable is named "python3.exe" or you want to use an absolute filepath.
 
@@ -70,17 +71,16 @@ If you click on the "Fusion Studio" custom command button and see the command pr
 
 If you click on the "Fusion Studio" custom command button and see the command prompt based error message "the following arguments are required: xml_path" it means you need to go back and adjust the custom command parameters. Change the "XML Export:" setting to "Selection".
 
+# Script CLI Usage Example:
 
-
-Script CLI Usage Example:
 It is possible to run the included "Scratch2Fusion.py" python script from the command-line.
 
 (Modify the path to the XML file in the example below to line up with your project's needs)
 
 python3 "/Library/Application Support/Assimilator/Defaults/Script/Scratch2Fusion.py" "/Library/Application Support/Assimilator/Project/LiveLink/Temp/cmd-0.xml"
 
+# Script Copyright:
 
-Script Copyright:
 The "Scratch2Fusion.py" script is based upon Assimilate's "s2nuke_v9.py" script:
 /Library/Application Support/Assimilator/Defaults/Script/s2nuke_v9.py
 
@@ -301,9 +301,9 @@ def Main():
 	print('------------------')
 
 	parser = argparse.ArgumentParser(
-		description='''Import Assimilate Scratch/LiveFX tray content into BMD Fusion Studio via an XML importer.'''
+		description='''Import Assimilate Scratch/LiveFX Construct content into BMD Fusion Studio via an XML importer.'''
 	)
-	parser.add_argument('xml_path', help='The path to your Scratch tray xml file')
+	parser.add_argument('xml_path', help='The path to your Scratch xml file')
 	args = parser.parse_args()
 
 	xml = args.xml_path

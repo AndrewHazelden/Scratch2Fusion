@@ -72,9 +72,9 @@ Make sure the file "Scratch2Fusion-macOS.command" or "Scratch2Fusion-Win.bat" is
 
 ![Select Executable](Images/4b.png)
 
-5. Open a Scratch project and switch to the Construct tab. Select several clips in the Tray.  In the Construct tab click on the "Tools" button. Then click on the Custom Commands > Fusion Studio" button to run this script.
+5. Open a Scratch project and switch to the Construct tab. Select several clips.  In the Construct tab click on the "Tools" button. Then click on the Custom Commands > Fusion Studio" button to run this script.
 
-![Tray](Images/5.png)
+![Construct](Images/5.png)
 
 6. Switch to Fusion Studio. The selected Scratch clips are now displayed in Fusion.
 
