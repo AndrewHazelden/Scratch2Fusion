@@ -6,7 +6,7 @@ Doc By: Andrew Hazelden <andrew@andrewhazelden.com>
 # Overview:
 This script imports Assimilate Scratch/LiveFX content into BMD Resolve Studio.
 
-Each clip is created as a media pool item. The filename, tile color, and comment attributes are assigned to each node.
+Each clip is created as a media pool item. The filename, clip color, and comment attributes are assigned to each media pool item.
 
 
 # Script Installation:
