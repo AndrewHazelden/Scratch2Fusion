@@ -321,16 +321,19 @@ img {
 }</style>
 </head>
 <body><h1>Scratch to Fusion</h1>
-<p>Doc Created: 2024-02-21<br />
+<p>Doc Created: 2024-04-08<br />
 Doc By: Andrew Hazelden <a href="mailto:andrew@andrewhazelden.com">andrew@andrewhazelden.com</a></p>
 <h1>Overview:</h1>
-<p>This script imports Assimilate Scratch/LiveFX tray content into BMD Fusion Studio.</p>
-<p>Each tray clip is created as a Loader node in Fusion. The filename, tile color, and comment attributes are assigned to each node.</p>
+<p>This script imports Assimilate Scratch/LiveFX content into BMD Fusion Studio.</p>
+<p>Each clip is created as a Loader node in Fusion. The filename, tile color, and comment attributes are assigned to each node.</p>
 <h1>Script Installation:</h1>
 <h2>Part A</h2>
-<p>Copy the two scripts &quot;Scratch2Fusion-macOS.command&quot; and &quot;Scratch2Fusion.py&quot; into the &quot;Assimilator/Defaults/Script/&quot; folder on your hard disk.</p>
+<p>Copy the included scripts into the &quot;Assimilator/Defaults/Script/&quot; folder on your hard disk.</p>
 <p>On macOS this folder is located at:</p>
 <pre><code>	/Library/Application Support/Assimilator/Defaults/Script/
+</code></pre>
+<p>On Windows this folder is located at:</p>
+<pre><code>	C:\Program Files\Assimilate\Settings\Script\
 </code></pre>
 <h2>Part B</h2>
 <p>How to Enable the &quot;Scratch to Fusion&quot; script:</p>
@@ -348,9 +351,16 @@ Doc By: Andrew Hazelden <a href="mailto:andrew@andrewhazelden.com">andrew@andrew
 </ol>
 <p><img src="Images/3.png" alt="Select Executable" /></p>
 <p>Add a new Custom Command entry:</p>
+<p>MacOS Custom Command:</p>
 <pre><code>	Title: Fusion Studio
 	Type: Application
 	File: /Library/Application Support/Assimilator/Defaults/Script/Scratch2Fusion-macOS.command
+	XML Export: Selection
+</code></pre>
+<p>Windows Custom Command:</p>
+<pre><code>	Title: Fusion Studio
+	Type: Application
+	File: C:\Program Files\Assimilate\Settings\Script\Scratch2Fusion-Win.bat
 	XML Export: Selection
 </code></pre>
 <p>To define the File attribute, click the &quot;Set&quot; button.</p>
@@ -359,17 +369,25 @@ Doc By: Andrew Hazelden <a href="mailto:andrew@andrewhazelden.com">andrew@andrew
 </ol>
 <p><img src="Images/4a.png" alt="Select Executable" /></p>
 <p>Then in the path entry text field at the top-center of the dialog paste in the text:</p>
+<p>macOS Path:</p>
 <pre><code>	/Library/Application Support/Assimilator/Defaults/Script/Scratch2Fusion-macOS.command
 </code></pre>
-<p>Make sure the file &quot;Scratch2Fusion-macOS.command&quot; is selected. Then press the &quot;Open&quot; button to close the dialog.</p>
+<p>Windows Path:</p>
+<pre><code>	C:\Program Files\Assimilate\Settings\Script\
+</code></pre>
+<p>Make sure the file &quot;Scratch2Fusion-macOS.command&quot; or &quot;Scratch2Fusion-Win.bat&quot; is selected. Then press the &quot;Open&quot; button to close the dialog.</p>
 <p><img src="Images/4b.png" alt="Select Executable" /></p>
 <ol start="5">
 <li>Open a Scratch project and switch to the Construct tab. Select several clips in the Tray.  In the Construct tab click on the &quot;Tools&quot; button. Then click on the Custom Commands &gt; Fusion Studio&quot; button to run this script.</li>
 </ol>
 <p><img src="Images/5.png" alt="Tray" /></p>
 <ol start="6">
-<li>Switch to Fusion Studio. The Scratch Tray items are now displayed in Fusion.</li>
+<li>Switch to Fusion Studio. The selected Scratch clips are now displayed in Fusion.</li>
 </ol>
 <p><img src="Images/6.png" alt="Fusion Studio" /></p>
+<h2>Troubleshooting</h2>
+<p>The &quot;Scratch2Fusion-Win.bat&quot; script on Windows expects your Python 3 executable to be in the PATH environment variable, and to have the filename of &quot;python.exe&quot;. You can revise the script if your executable is named &quot;python3.exe&quot; or you want to use an absolute filepath.</p>
+<p>If you click on the &quot;Fusion Studio&quot; custom command button and see the command prompt based error message &quot;Could not connect to the foreground Fusion composite&quot; it means the Fusion Render Node process running on the same system intercepted the content that was being passed to Fusion Studio. Quit the Fusion Render Node process and things should work as expected.</p>
+<p>If you click on the &quot;Fusion Studio&quot; custom command button and see the command prompt based error message &quot;the following arguments are required: xml_path&quot; it means you need to go back and adjust the custom command parameters. Change the &quot;XML Export:&quot; setting to &quot;Selection&quot;.</p>
 </body>
 </html>
