@@ -103,7 +103,7 @@ import sys, os, argparse, json, re, glob, platform
 import warnings
 warnings.filterwarnings('ignore', category=DeprecationWarning)
 
-# The imp library will be deprecitated in Python 3.12. Look for a replacement option at that time.
+# The imp library will be depreciated in Python 3.12. Look for a replacement option at that time.
 import imp
 
 def FuScriptLib():
