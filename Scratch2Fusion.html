@@ -345,11 +345,11 @@ Doc By: Andrew Hazelden <a href="mailto:andrew@andrewhazelden.com">andrew@andrew
 <p>Once Assimilate has launched, click on the &quot;System Settings...&quot; button on the splash screen.</p>
 </li>
 </ol>
-<p><img src="Images/2.png" alt="Select Executable" /></p>
+<p><img src="Images/fusion-2.png" alt="Select Executable" /></p>
 <ol start="3">
 <li>In the &quot;System Settings&quot; dialog select &quot;Custom Commands&quot;.</li>
 </ol>
-<p><img src="Images/3.png" alt="Select Executable" /></p>
+<p><img src="Images/fusion-3.png" alt="Select Executable" /></p>
 <p>Add a new Custom Command entry:</p>
 <p>MacOS Custom Command:</p>
 <pre><code>	Title: Fusion Studio
@@ -367,7 +367,7 @@ Doc By: Andrew Hazelden <a href="mailto:andrew@andrewhazelden.com">andrew@andrew
 <ol start="4">
 <li>In the &quot;Select Executable&quot; dialog change the &quot;All Formats...&quot; pop-up menu to &quot;All Files...&quot; to allow the selection of more file types.</li>
 </ol>
-<p><img src="Images/4a.png" alt="Select Executable" /></p>
+<p><img src="Images/fusion-4a.png" alt="Select Executable" /></p>
 <p>Then in the path entry text field at the top-center of the dialog paste in the text:</p>
 <p>macOS Path:</p>
 <pre><code>	/Library/Application Support/Assimilator/Defaults/Script/Scratch2Fusion-macOS.command
@@ -376,15 +376,15 @@ Doc By: Andrew Hazelden <a href="mailto:andrew@andrewhazelden.com">andrew@andrew
 <pre><code>	C:\Program Files\Assimilate\Settings\Script\
 </code></pre>
 <p>Make sure the file &quot;Scratch2Fusion-macOS.command&quot; or &quot;Scratch2Fusion-Win.bat&quot; is selected. Then press the &quot;Open&quot; button to close the dialog.</p>
-<p><img src="Images/4b.png" alt="Select Executable" /></p>
+<p><img src="Images/fusion-4b.png" alt="Select Executable" /></p>
 <ol start="5">
 <li>Open a Scratch project and switch to the Construct tab. Select several clips.  In the Construct tab click on the &quot;Tools&quot; button. Then click on the Custom Commands &gt; Fusion Studio&quot; button to run this script.</li>
 </ol>
-<p><img src="Images/5.png" alt="Construct" /></p>
+<p><img src="Images/fusion-5.png" alt="Construct" /></p>
 <ol start="6">
 <li>Switch to Fusion Studio. The selected Scratch clips are now displayed in Fusion.</li>
 </ol>
-<p><img src="Images/6.png" alt="Fusion Studio" /></p>
+<p><img src="Images/fusion-6.png" alt="Fusion Studio" /></p>
 <h2>Troubleshooting</h2>
 <p>The &quot;Scratch2Fusion-Win.bat&quot; script on Windows expects your Python 3 executable to be in the PATH environment variable, and to have the filename of &quot;python.exe&quot;. You can revise the script if your executable is named &quot;python3.exe&quot; or you want to use an absolute filepath.</p>
 <p>If you click on the &quot;Fusion Studio&quot; custom command button and see the command prompt based error message &quot;Could not connect to the foreground Fusion composite&quot; it means the Fusion Render Node process running on the same system intercepted the content that was being passed to Fusion Studio. Quit the Fusion Render Node process and things should work as expected.</p>

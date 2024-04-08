@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 '''
-Scratch to Fusion - 2024-04-08 01.34 PM
+Scratch to Resolve - 2024-04-08 01.34 PM
 By Andrew Hazelden <andrew@andrewhazelden.com>
 
 # Overview:
-This script imports Assimilate Scratch/LiveFX content into BMD Fusion Studio.
+This script imports Assimilate Scratch/LiveFX content into BMD Resolve Studio.
 
-Each clip is created as a Loader node in Fusion. The filename, tile color, and comment attributes are assigned to each node.
+Each clip is created as a media pool item. The filename, tile color, and comment attributes are assigned to each node.
 
 # Script Installation:
 
@@ -22,9 +22,9 @@ C:\Program Files\Assimilate\Settings\Script\
 
 ## Part B
 
-How to Enable the "Scratch to Fusion" script: 
+How to Enable the "Scratch to Resolve" script: 
 
-1. Launch BMD Fusion Studio and Assimilate Scratch/LiveFX.
+1. Launch BMD Resolve Studio and Assimilate Scratch/LiveFX.
 
 2. Once Assimilate has launched, click on the "System Settings..." button on the splash screen.
 
@@ -32,16 +32,16 @@ How to Enable the "Scratch to Fusion" script:
 
 MacOS Custom Command:
 
-	Title: Fusion Studio
+	Title: Resolve Studio
 	Type: Application
-	File: /Library/Application Support/Assimilator/Defaults/Script/Scratch2Fusion-macOS.command
+	File: /Library/Application Support/Assimilator/Defaults/Script/Scratch2Resolve-macOS.command
 	XML Export: Selection
 
 Windows Custom Command:
 
-	Title: Fusion Studio
+	Title: Resolve Studio
 	Type: Application
-	File: C:\Program Files\Assimilate\Settings\Script\Scratch2Fusion-Win.bat
+	File: C:\Program Files\Assimilate\Settings\Script\Scratch2Resolve-Win.bat
 	XML Export: Selection
 
 To define the File attribute, click the "Set" button. 
@@ -56,32 +56,37 @@ macOS Path:
 Windows Path:
 	C:\Program Files\Assimilate\Settings\Script\
 
-Make sure the file "Scratch2Fusion-macOS.command" or "Scratch2Fusion-Win.bat" is selected. Then press the "Open" button to close the dialog.
+Make sure the file "Scratch2Resolve-macOS.command" or "Scratch2Resolve-Win.bat" is selected. Then press the "Open" button to close the dialog.
 
-5. Open a Scratch project and switch to the Construct tab. Select several clips.  In the Construct tab click on the "Tools" button. Then click on the Custom Commands > Fusion Studio" button to run this script.
+5. Open a Scratch project and switch to the Construct tab. Select several clips.  In the Construct tab click on the "Tools" button. Then click on the Custom Commands > Resolve Studio" button to run this script.
 
-6. Switch to Fusion Studio. The selected Scratch clips are now displayed in Fusion.
+6. Switch to Resolve Studio. The selected Scratch clips are now displayed in the media pool.
 
 
 # Troubleshooting:
 
-The "Scratch2Fusion-Win.bat" script on Windows expects your Python 3 executable to be in the PATH environment variable, and to have the filename of "python.exe". You can revise the script if your executable is named "python3.exe" or you want to use an absolute filepath.
+The "Scratch2Resolve-Win.bat" script on Windows expects your Python 3 executable to be in the PATH environment variable, and to have the filename of "python.exe". You can revise the script if your executable is named "python3.exe" or you want to use an absolute filepath.
 
-If you click on the "Fusion Studio" custom command button and see the command prompt based error message "Could not connect to the foreground Fusion composite" it means the Fusion Render Node process running on the same system intercepted the content that was being passed to Fusion Studio. Quit the Fusion Render Node process and things should work as expected.
+If you click on the "Resolve Studio" custom command button and see the command prompt based error message "Could not connect to the foreground Resolve session" it means the Fusion Render Node or Fusion Studio processes running on the same system intercepted the content that was being passed to Resolve Studio. Quit the Fusion Render Node/Fusion Studio processes and things should work as expected.
 
-If you click on the "Fusion Studio" custom command button and see the command prompt based error message "the following arguments are required: xml_path" it means you need to go back and adjust the custom command parameters. Change the "XML Export:" setting to "Selection".
+If you click on the "Resolve Studio" custom command button and see the command prompt based error message "the following arguments are required: xml_path" it means you need to go back and adjust the custom command parameters. Change the "XML Export:" setting to "Selection".
 
 # Script CLI Usage Example:
 
-It is possible to run the included "Scratch2Fusion.py" python script from the command-line.
+It is possible to run the included "Scratch2Resolve.py" python script from the command-line.
 
 (Modify the path to the XML file in the example below to line up with your project's needs)
 
-python3 "/Library/Application Support/Assimilator/Defaults/Script/Scratch2Fusion.py" "/Library/Application Support/Assimilator/Project/LiveLink/Temp/cmd-0.xml"
+macOS CLI Command:
+python3 "/Library/Application Support/Assimilator/Defaults/Script/Scratch2Resolve.py" "/Library/Application Support/Assimilator/Project/LiveLink/Temp/cmd-0.xml"
+
+Windows CLI Command:
+python "C:\Program Files\Assimilate\Settings\Script\Scratch2Resolve.py" "C:\ProgramData\Assimilator\Project\Project1\Temp\cmd-0.xml"
+
 
 # Script Copyright:
 
-The "Scratch2Fusion.py" script is based upon Assimilate's "s2nuke_v9.py" script:
+The "Scratch2Resolve.py" script is based upon Assimilate's "s2nuke_v9.py" script:
 /Library/Application Support/Assimilator/Defaults/Script/s2nuke_v9.py
 
 The original "s2nuke_v9.py" script was provided with the following license terms:
@@ -109,20 +114,20 @@ import imp
 def FuScriptLib():
 	lib_path = ''
 	if sys.platform.startswith('darwin'):
-		lib_path = '/Applications/Blackmagic Fusion 18/Fusion.app/Contents/Libraries/fusionscript.so'
+		lib_path = '/Applications/DaVinci Resolve/DaVinci Resolve.app/Contents/Libraries/Fusion/fusionscript.so'
 	elif sys.platform.startswith('win'):
-		lib_path = 'C:\\Program Files\\Blackmagic Design\\Fusion 18\\fusionscript.dll'
+		lib_path = 'C:\\Program Files\\Blackmagic Design\\DaVinci Resolve\\fusionscript.dll'
 	elif sys.platform.startswith('linux'):
-		lib_path = '/opt/BlackmagicDesign/Fusion18/fusionscript.so'
+		lib_path = '/opt/resolve/libs/Fusion/fusionscript.so'
 
 	if not os.path.isfile(lib_path):
-		print('[Fusion Studio] [Library Does Not Exist on Disk]', lib_path)
+		print('[Resolve Studio] [Library Does Not Exist on Disk]', lib_path)
 
 	bmd = imp.load_dynamic('fusionscript', lib_path)
 	if bmd:
 		sys.modules[__name__] = bmd
 	else:
-		raise ImportError('[Fusion Studio] Could not locate module dependencies')
+		raise ImportError('[Resolve Studio] Could not locate module dependencies')
 	return bmd
 
 def Resolve():
@@ -134,68 +139,87 @@ def Fusion():
 	return app
 
 # Get the Fusion objects
-fu = Fusion()
-fusion = Fusion()
+resolve = Resolve()
+res = Resolve()
+app = Resolve()
 bmd = FuScriptLib()
 
-# Connect to the current foreground comp
-print(fusion)
-comp = fu.GetCurrentComp()
+def GetTimeline():
+	project = GetProject()
+	timeline = project.GetCurrentTimeline()
 
-def AddNode(clip_dict):
+	if not timeline:
+		if project.GetTimelineCount() > 0:
+			timeline = project.GetTimelineByIndex(1)
+			project.SetCurrentTimeline(timeline)
+
+	return timeline
+
+def GetProject():
+	# Get the current Resolve timeline
+	resolve = Resolve()
+	projectManager = resolve.GetProjectManager()
+	project = projectManager.GetCurrentProject()
+	return project
+
+def GetMediaPool():
+	resolve = Resolve()
+	projectManager = resolve.GetProjectManager()
+	project = projectManager.GetCurrentProject()
+	mediapool = project.GetMediaPool()
+	return mediapool
+
+def GetFolder(parentFolder, childFolder, mediapool):
+	if parentFolder != None:
+		for folder in parentFolder.GetSubFolderList():
+			if folder.GetName() == childFolder:
+				return folder
+		else:
+			return mediapool.AddSubFolder(parentFolder, childFolder)
+	else:
+		return None
+
+def ImportMedia(clip_dict):
 	print(clip_dict)
-	# Deselect the nodes
-	comp.CurrentFrame.FlowView.Select()
-	# Add a Loader node
-	ldr = comp.AddTool('Loader', -32768, -32768)
-	# Set the Loader node filename
-	filename = comp.MapPath(clip_dict['file'])
-	ldr.Clip[fu.TIME_UNDEFINED] = filename
-	comp.Print(filename + '\n')
-	# Set the global frame ranges
-	ldr.SetAttrs({'GlobalStart' : clip_dict['in']})
-	ldr.SetAttrs({'GlobalEnd' : clip_dict['out']})
-	# Set the node tile color
-	# The default color for Loader nodes is blue in Fusion (note_color = 0)
-	color = {'R': 0.474509803921569, 'G': 0.658823529411765, 'B': 0.815686274509804}
-	if clip_dict['note_color'] == None:
-		# blue
-		color = {'R': 0.474509803921569, 'G': 0.658823529411765, 'B': 0.815686274509804}
-	elif clip_dict['note_color'] == '0':
-		# yellow
-		color = {'R': 0.886274509803922, 'G': 0.662745098039216, 'B': 0.109803921568627}
-	elif clip_dict['note_color'] == '1':
-		# red
-		color = {'R': 0.913725490196078, 'G': 0.549019607843137, 'B': 0.709803921568627}
-	elif clip_dict['note_color'] == '2':
-		# green
-		color = {'R': 0.266666666666667, 'G': 0.56078431372549, 'B': 0.396078431372549}
-	elif clip_dict['note_color'] == '3':
-		# blue
-		color = {'R': 0.474509803921569, 'G': 0.658823529411765, 'B': 0.815686274509804}
-	elif clip_dict['note_color'] == '4':
-		# purple
-		color = {'R': 0.6, 'G': 0.450980392156863, 'B': 0.627450980392157}
-	elif clip_dict['note_color'] == '5':
-		# orange
-		color = {'R': 0.92156862745098, 'G': 0.431372549019608, 'B': 0}
-	elif clip_dict['note_color'] == '6':
-		# cyan
-		color = {'R': 0, 'G': 0.596078431372549, 'B': 0.6}
-	elif clip_dict['note_color'] == '7':
-		# pink
-		color = {'R': 0.913725490196078, 'G': 0.549019607843137, 'B': 0.709803921568627}
-	elif clip_dict['note_color'] == '8':
-		# black
-		color = {'R': 0.549019607843137, 'G': 0.352941176470588, 'B': 0.247058823529412}
-	elif clip_dict['note_color'] == 10:
-		# white
-		color = {'R': 0.725490196078431, 'G': 0.690196078431373, 'B': 0.592156862745098}
+	project = GetProject()
+	mediapool = GetMediaPool()
 
-	ldr.TileColor = color
+	mpItems = mediapool.ImportMedia([clip_dict['file']])
+	if not mpItems:
+		return
+	for mpItem in mpItems:
+		mpItem.SetClipProperty("StartIndex", clip_dict['in'])
+		mpItem.SetClipProperty("EndIndex", clip_dict['out'])
+		mpItem.SetClipProperty("Description", clip_dict['note'])
 
-	# Set the comment to hold the Scratch note
-	ldr.Comments = clip_dict['note']
+		# Clip Color
+		if clip_dict['note_color'] == None:
+			color = 'Blue'
+		elif clip_dict['note_color'] == '0':
+			color = 'Yellow'
+		elif clip_dict['note_color'] == '1':
+			color = 'Pink'
+		elif clip_dict['note_color'] == '2':
+			color = 'Green'
+		elif clip_dict['note_color'] == '3':
+			color = 'Blue'
+		elif clip_dict['note_color'] == '4':
+			color = 'Violet'
+		elif clip_dict['note_color'] == '5':
+			color = 'Orange'
+		elif clip_dict['note_color'] == '6':
+			color = 'Teal'
+		elif clip_dict['note_color'] == '7':
+			color = 'Pink'
+		elif clip_dict['note_color'] == '8':
+			color = 'Chocolate'
+		elif clip_dict['note_color'] == '10':
+			color = 'Tan'
+		else:
+			color = 'Blue'
+
+		mpItem.SetClipColor(color)
+
 
 def ParseClip(clip, clip_NB, clips_dict):
 	clip_dict = {}
@@ -254,7 +278,7 @@ def ParseClip(clip, clip_NB, clips_dict):
 		clip_dict['note'] = note.text
 
 	# Import the footage
-	AddNode(clip_dict)
+	ImportMedia(clip_dict)
 
 def XML_Selection(xml):
 	clip_NB = 1
@@ -288,7 +312,7 @@ def XML_Selection(xml):
 	xml_infos['construct_name'] = construct
 	clips = Selection.findall('shot')
 
-	comp.Print('[Importing Media]\n')
+	print('[Importing Media]\n')
 	clips_dict = {}
 	for clip in clips:
 		ParseClip(clip, clip_NB, clips_dict)
@@ -297,37 +321,30 @@ def XML_Selection(xml):
 
 def Main():
 	print('\n------------------')
-	print('Scratch 2 Fusion')
+	print('Scratch 2 Resolve')
 	print('------------------')
 
 	parser = argparse.ArgumentParser(
-		description='''Import Assimilate Scratch/LiveFX Construct content into BMD Fusion Studio via an XML importer.'''
+		description='''Import Assimilate Scratch/LiveFX Construct content into BMD Resolve Studio via an XML importer.'''
 	)
 	parser.add_argument('xml_path', help='The path to your Scratch xml file')
 	args = parser.parse_args()
 
 	xml = args.xml_path
 	if xml:
-		if comp:
-			# Add a new undo history item
-			comp.StartUndo('Scratch to Fusion')
+		if app:
+			# Open the Media page
+			resolve.OpenPage("media")
 	
-			# Stop file dialogs from appearing
-			comp.Lock()
-	
-			# Process the XML file
-			comp.Print('[XML Document] ' + xml + '\n\n')
+			project = GetProject()
+			mediapool = GetMediaPool()
+
+			print('[XML Document] ' + xml + '\n\n')
 			mClipData = XML_Selection(xml)
-	
-			# Allow file dialogs to appear
-			comp.Unlock()
-	
-			#Close off the undo history item block
-			comp.EndUndo(True)
 		else:
-			print('[Scratch 2 Fusion] Could not connect to the foreground Fusion composite')
+			print('[Scratch 2 Resolve] Could not connect to the active Resolve session')
 	else:
-		print('[Scratch 2 Fusion] XML filepath is invalid')
+		print('[Scratch 2 Resolve] XML filepath is invalid')
 	print('[Done]')
 
 if __name__ == '__main__':

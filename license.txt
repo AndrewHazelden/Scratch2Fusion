@@ -1,4 +1,4 @@
-The "Scratch2Fusion.py" script is based upon Assimilate's "s2nuke_v9.py" script:
+The "Scratch2Fusion.py" and "Scratch2Resolve.py" scripts are based upon Assimilate's "s2nuke_v9.py" script:
 /Library/Application Support/Assimilator/Defaults/Script/s2nuke_v9.py
 
 The original "s2nuke_v9.py" script was provided with the following license terms:
