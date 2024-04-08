@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Scratch to Resolve - 2024-04-08 01.34 PM
+Scratch to Resolve - 2024-04-08 01.39 PM
 By Andrew Hazelden <andrew@andrewhazelden.com>
 
 # Overview:
@@ -188,9 +188,9 @@ def ImportMedia(clip_dict):
 	if not mpItems:
 		return
 	for mpItem in mpItems:
-		mpItem.SetClipProperty("StartIndex", clip_dict['in'])
-		mpItem.SetClipProperty("EndIndex", clip_dict['out'])
-		mpItem.SetClipProperty("Description", clip_dict['note'])
+		mpItem.SetClipProperty('StartIndex', clip_dict['in'])
+		mpItem.SetClipProperty('EndIndex', clip_dict['out'])
+		mpItem.SetClipProperty('Description', clip_dict['note'])
 
 		# Clip Color
 		if clip_dict['note_color'] == None:
@@ -213,7 +213,7 @@ def ImportMedia(clip_dict):
 			color = 'Pink'
 		elif clip_dict['note_color'] == '8':
 			color = 'Chocolate'
-		elif clip_dict['note_color'] == '10':
+		elif clip_dict['note_color'] == '9':
 			color = 'Tan'
 		else:
 			color = 'Blue'
@@ -334,7 +334,7 @@ def Main():
 	if xml:
 		if app:
 			# Open the Media page
-			resolve.OpenPage("media")
+			resolve.OpenPage('media')
 	
 			project = GetProject()
 			mediapool = GetMediaPool()

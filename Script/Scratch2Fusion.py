@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 '''
-Scratch to Fusion - 2024-04-08 01.34 PM
+Scratch to Fusion - 2024-04-08 01.39 PM
 By Andrew Hazelden <andrew@andrewhazelden.com>
 
 # Overview:
@@ -188,7 +188,7 @@ def AddNode(clip_dict):
 	elif clip_dict['note_color'] == '8':
 		# black
 		color = {'R': 0.549019607843137, 'G': 0.352941176470588, 'B': 0.247058823529412}
-	elif clip_dict['note_color'] == 10:
+	elif clip_dict['note_color'] == '9':
 		# white
 		color = {'R': 0.725490196078431, 'G': 0.690196078431373, 'B': 0.592156862745098}
 
